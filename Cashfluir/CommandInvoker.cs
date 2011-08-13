@@ -9,14 +9,18 @@ namespace Cashfluir
 {
     public class CommandInvoker : ICommandInvoker
     {
+        private IContainer container;
+        private IDocumentSession session;
         public CommandInvoker(IContainer container, IDocumentSession session)
         {
-
+            this.container = container;
+            this.session = session;
         }
 
         public void Execute<T>(T command)
         {
-            throw new NotImplementedException();
+            var handler = this.container.GetInstance<ICommandHandler<T>>();
+            handler.Handle(command);                                                             
         }
-    }
+    }                                                       
 }
