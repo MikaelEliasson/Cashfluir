@@ -5,6 +5,7 @@ using System.Text;
 using StructureMap.Configuration.DSL;
 using Raven.Client;
 using Cashfluir.Conventions;
+using StructureMap;
 
 namespace Cashfluir
 {
@@ -19,6 +20,7 @@ namespace Cashfluir
                 s.With(new RegisterFirstInstanceOfInterface());
             });
 
+            For<ICommandInvoker>().TheDefaultIsConcreteType<CommandInvoker>();
             For<IDocumentStore>().Use(documentStore);
             For<IDocumentSession>()
                 .HybridHttpOrThreadLocalScoped()

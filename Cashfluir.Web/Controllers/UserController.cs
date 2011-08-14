@@ -16,10 +16,6 @@ namespace Cashfluir.Web.Controllers
             this.invoker = invoker;
         }
 
-        public UserController()
-        {
-
-        }
         //
         // GET: /User/
 

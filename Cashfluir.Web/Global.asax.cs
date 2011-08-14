@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using StructureMap;
+using Cashfluir.Web.DependencyResolution;
 
 namespace Cashfluir.Web
 {
@@ -35,10 +36,11 @@ namespace Cashfluir.Web
             AreaRegistration.RegisterAllAreas();
 
             DependencyResolver.SetResolver(new SmDependencyResolver(ObjectFactory.Container));
+            //ObjectFactory.Container.Configure(a => a.Register<IControllerActivator>(new CustomControllerActivator()));
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
-
+           
             Bootstrapper.Startup();
         }
 

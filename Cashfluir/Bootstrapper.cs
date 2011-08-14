@@ -20,7 +20,7 @@ namespace Cashfluir
 
             documentStore.Initialize();
 
-            ObjectFactory.Initialize(config =>
+            ObjectFactory.Configure(config =>
             {
                 config.AddRegistry(new CoreRegistry(documentStore));
             });
