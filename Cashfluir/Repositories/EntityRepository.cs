@@ -20,7 +20,7 @@ namespace Cashfluir.Repositories
             return this.documentSession.Load<TEntity>(id);
         }
 
-        public void Add(TEntity entity)
+        public void Save(TEntity entity)
         {
             this.documentSession.Store(entity);
         }

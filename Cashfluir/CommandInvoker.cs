@@ -20,7 +20,8 @@ namespace Cashfluir
         public void Execute<T>(T command)
         {
             var handler = this.container.GetInstance<ICommandHandler<T>>();
-            handler.Handle(command);                                                             
+            handler.Handle(command);
+            this.session.SaveChanges();                                              
         }
     }                                                       
 }

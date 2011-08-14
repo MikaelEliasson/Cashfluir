@@ -9,19 +9,17 @@ using Cashfluir.Model;
 
 namespace Cashfluir.CommandHandlers
 {
-    public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand>
+    public class EditUserCommandHandler : ICommandHandler<EditUserCommand>
     {
         private IUserRepository repository;
-
-        public CreateUserCommandHandler(IUserRepository repository)
+        public EditUserCommandHandler(IUserRepository repository)
         {
             this.repository = repository;
         }
 
-        public void Handle(CreateUserCommand command)
+        public void Handle(EditUserCommand command)
         {
-            var user = new User { Name = command.Name };
-            this.repository.Save(user);
+            this.repository.Save(new User { Name = command.Name, Id = command.ID });
         }
     }
 }

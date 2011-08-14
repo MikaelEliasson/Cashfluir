@@ -17,7 +17,7 @@ namespace Cashfluir
             {
                 DataDirectory = "App_Data\\RavenDB",
             };
-
+            documentStore.Conventions.IdentityPartsSeparator = "-";
             documentStore.Initialize();
 
             ObjectFactory.Configure(config =>

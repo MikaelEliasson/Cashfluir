@@ -1,11 +1,17 @@
-﻿@{
+﻿@model Cashfluir.Web.Models.Users.IndexViewModel
+@{
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Users</h2>
 
-<p>List users here --</p>
+<ul>
+    @foreach (var user in Model.Users)
+    {
+        <li>@Html.ActionLink(user.Name, "Edit", new{ id = user.Id})</li>
+    }
+</ul>
 
 @Html.ActionLink("Create new user", "Create")
 

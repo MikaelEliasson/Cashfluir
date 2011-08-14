@@ -4,16 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Cashfluir.Web.Models;
+using Cashfluir.Commands;
+using Cashfluir.Services;
+using Cashfluir.Web.Models.Users;
 
 namespace Cashfluir.Web.Controllers
 {
     public class UserController : Controller
     {
         private readonly ICommandInvoker invoker;
+        private IUserService userService;
 
-        public UserController(ICommandInvoker invoker)
+        public UserController(ICommandInvoker invoker, IUserService userService)
         {
             this.invoker = invoker;
+            this.userService = userService;
         }
 
         //
@@ -21,7 +26,11 @@ namespace Cashfluir.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var vm = new IndexViewModel
+            {
+                Users = this.userService.GetUsers()
+            };
+            return View(vm);
         }
 
         //
@@ -48,9 +57,9 @@ namespace Cashfluir.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dummy = model.Name;
+                var command = new CreateUserCommand { Name = model.Name };
 
-                this.invoker.Execute(dummy);
+                this.invoker.Execute(command);
                 return RedirectToAction("Index");
 
             }
@@ -61,27 +70,28 @@ namespace Cashfluir.Web.Controllers
         //
         // GET: /User/Edit/5
  
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            var vm = new EditUserViewModel
+            {
+                Name = this.userService.GetUser(id).Name
+            };
+            return View(vm);
         }
 
         //
         // POST: /User/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, EditUserViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
- 
+                var command = new EditUserCommand { Name = model.Name, ID = id };
+                this.invoker.Execute(command);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(model);
         }
 
         //
