@@ -102,9 +102,11 @@
     <Compile Include="Commands\EditUserCommand.cs" />
     <Compile Include="Conventions\RegisterFirstInstanceOfInterface.cs" />
     <Compile Include="CoreRegistry.cs" />
+    <Compile Include="EnumExtentions.cs" />
     <Compile Include="ICommandHandler.cs" />
     <Compile Include="ICommandInvoker.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Model\CategoryType.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Conventions\RegisterGenericTypesOfInterface.cs" />
