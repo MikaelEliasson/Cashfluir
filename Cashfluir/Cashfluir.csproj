@@ -96,10 +96,12 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="CommandHandlers\EditUserCommandHandler.cs" />
+    <Compile Include="CommandHandlers\RegisterAbsenceCommandHandler.cs" />
     <Compile Include="Commands\CreateUserCommand.cs" />
     <Compile Include="CommandHandlers\CreateUserCommandHandler.cs" />
     <Compile Include="CommandInvoker.cs" />
     <Compile Include="Commands\EditUserCommand.cs" />
+    <Compile Include="Commands\RegisterAbsenceCommand.cs" />
     <Compile Include="Conventions\RegisterFirstInstanceOfInterface.cs" />
     <Compile Include="CoreRegistry.cs" />
     <Compile Include="EnumExtentions.cs" />

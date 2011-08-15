@@ -1,0 +1,60 @@
+﻿@model Cashfluir.Web.Models.Absence.IndexViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Index</h2>
+<h3>
+    Users</h3>
+<ul>
+    @foreach (var user in Model.Users)
+    {
+        <li>@Html.ActionLink(user.Name, "Index", new { id = user.Id })</li>
+    }
+</ul>
+@if (Model.Days == null)
+{
+    return;
+}
+<h3>
+    Days</h3>
+@using (Html.BeginForm("Register", "Absence", FormMethod.Post, new { id = Model.User.Id }))
+{
+    <ul>
+        @foreach (var day in Model.Days)
+        {
+            <li>
+                @day.Date.ToString("dd")
+                @Html.CheckBox("cb_" + day.Date.ToShortDateString(), day.Abscent, new { value = day.Date.ToShortDateString() })
+            </li>
+        }
+        
+    </ul>
+    <input id="submitButton" type="submit" value="Save" />
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        jQuery.ajaxSettings.traditional = true;
+        $("#submitButton").click(function (e) {
+            e.preventDefault();
+            var form = $(this).closest("form");
+            var days = [];
+            form.find(':checkbox:checked').each(function(){
+                days.push($(this).val());
+            });
+
+            $.ajax({
+                type: "POST",
+                url: form.attr("action"),
+                data: { id : "@Model.User.Id", dates : days},
+                dataType: "json",
+                success: function(data) {
+                    alert('great');
+                }
+            });
+
+        });
+    });
+</script>

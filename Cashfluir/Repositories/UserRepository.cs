@@ -18,7 +18,7 @@ namespace Cashfluir.Repositories
 
         public User Load(string id)
         {
-            throw new NotImplementedException();
+            return this.session.Load<User>(id);
         }
 
         public void Save(User entity)
