@@ -1,28 +1,17 @@
-﻿@model Cashfluir.Web.Models.Category.IndexCategoryViewModel
+﻿@model Cashfluir.Web.Models.Categories.IndexCategoryViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Categories</h2>
 
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<ul>
+    @foreach (var category in Model.Categories)
+    {
+        <li>@Html.ActionLink(category.Name, "Edit", new { id = category.Id })</li>
+    }    
+</ul>
 
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>IndexCategoryViewModel</legend>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
-    @Html.ActionLink("Create new user", "Create")
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
+@Html.ActionLink("Create new category", "Create")

@@ -1,0 +1,17 @@
+﻿@model Cashfluir.Web.Models.Expenses.IndexExpenseViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<ul>
+    @foreach (var expense in Model.Expenses)
+    {
+        <li>@Html.ActionLink(expense.Date.ToShortDateString(), "Edit", new { id = expense.Id }) @expense.Owner.Name @expense.Amount kr </li>
+    }
+</ul>
+
+@Html.ActionLink("Create new expense", "Create")

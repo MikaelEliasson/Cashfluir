@@ -1,0 +1,64 @@
+﻿@model Cashfluir.Web.Models.Expenses.EditExpenseViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Edit Expense</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Amount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Shop)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Shop)
+            @Html.ValidationMessageFor(model => model.Shop)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ExpenseType)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.ExpenseType, Model.ExpenseTypes)
+            @Html.ValidationMessageFor(model => model.ExpenseType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Owner)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Owner, Model.Owners)
+            @Html.ValidationMessageFor(model => model.Owner)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

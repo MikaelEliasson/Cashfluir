@@ -4,29 +4,34 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Cashfluir.Web.Models;
+using Cashfluir.Commands;
+using Cashfluir.Services;
+using Cashfluir.Web.Models.Users;
+using Cashfluir.Web.Models.Categories;
 
 namespace Cashfluir.Web.Controllers
 {
     public class CategoryController : Controller
     {
+        private readonly ICommandInvoker invoker;
+        private ICategoryService categoryService;
+
+        public CategoryController(ICommandInvoker invoker, ICategoryService categoryService)
+        {
+            this.invoker = invoker;
+            this.categoryService = categoryService;
+        }
+
         //
         // GET: /Category/
 
-        private readonly ICommandInvoker invoker;
-
-        public CategoryController()
-        {
-
-        }
-
-        public CategoryController(ICommandInvoker invoker)
-        {
-            this.invoker = invoker;
-        }
-
         public ActionResult Index()
         {
-            return View();
+            var vm = new IndexCategoryViewModel
+            {
+                Categories = this.categoryService.GetCategories()
+            };
+            return View(vm);
         }
 
         //
@@ -49,44 +54,45 @@ namespace Cashfluir.Web.Controllers
         // POST: /Category/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(CreateCategoryViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                var command = new CreateCategoryCommand { Name = model.Name, Type = model.Type };
+                this.invoker.Execute(command);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(model);
         }
         
         //
         // GET: /Category/Edit/5
- 
-        public ActionResult Edit(int id)
+
+        public ActionResult Edit(string id)
         {
-            return View();
+            var vm = new EditCategoryViewModel 
+            {
+                Name = this.categoryService.GetCategory(id).Name,
+                Type = this.categoryService.GetCategory(id).Type 
+            };
+            return View(vm);
         }
 
         //
         // POST: /Category/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, EditCategoryViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
- 
+                var command = new EditCategoryCommand { Name = model.Name, Type = model.Type, ID = id };
+                this.invoker.Execute(command);
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(model);
         }
 
         //

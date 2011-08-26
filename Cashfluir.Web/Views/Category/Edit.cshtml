@@ -1,4 +1,4 @@
-﻿@model Cashfluir.Web.Models.Users.EditUserViewModel
+﻿@model Cashfluir.Web.Models.Categories.EditCategoryViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -10,7 +10,7 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Edit User</legend>
+        <legend>Edit Category</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -18,6 +18,14 @@
         <div class="editor-field">
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Type)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Type, Model.Types)
+            @Html.ValidationMessageFor(model => model.Type)
         </div>
 
         <p>
@@ -29,3 +37,4 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+

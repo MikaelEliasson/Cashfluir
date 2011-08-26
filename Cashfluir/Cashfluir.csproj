@@ -95,10 +95,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="CommandHandlers\CreateCategoryCommandHandler.cs" />
+    <Compile Include="CommandHandlers\CreateExpenseCommandHandler.cs" />
+    <Compile Include="CommandHandlers\EditCategoryCommandHandler.cs" />
+    <Compile Include="CommandHandlers\EditExpenseCommandHandler.cs" />
     <Compile Include="CommandHandlers\EditUserCommandHandler.cs" />
+    <Compile Include="Commands\CreateCategoryCommand.cs" />
+    <Compile Include="Commands\CreateExpenseCommand.cs" />
     <Compile Include="Commands\CreateUserCommand.cs" />
     <Compile Include="CommandHandlers\CreateUserCommandHandler.cs" />
     <Compile Include="CommandInvoker.cs" />
+    <Compile Include="Commands\EditCategoryCommand.cs" />
+    <Compile Include="Commands\EditExpenseCommand.cs" />
     <Compile Include="Commands\EditUserCommand.cs" />
     <Compile Include="Conventions\RegisterFirstInstanceOfInterface.cs" />
     <Compile Include="CoreRegistry.cs" />
@@ -106,14 +114,25 @@
     <Compile Include="ICommandHandler.cs" />
     <Compile Include="ICommandInvoker.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Model\Category.cs" />
     <Compile Include="Model\CategoryType.cs" />
+    <Compile Include="Model\Expense.cs" />
+    <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Conventions\RegisterGenericTypesOfInterface.cs" />
+    <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\EntityRepository.cs" />
+    <Compile Include="Repositories\ExpenseRepository.cs" />
+    <Compile Include="Repositories\ICategoryRepository.cs" />
     <Compile Include="Repositories\IEntityRepository.cs" />
+    <Compile Include="Repositories\IExpenseRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\ExpenseService.cs" />
+    <Compile Include="Services\ICategoryService.cs" />
+    <Compile Include="Services\IExpenseService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>

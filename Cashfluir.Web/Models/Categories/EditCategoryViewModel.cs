@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using Cashfluir.Model;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 
-namespace Cashfluir.Web.Models
+namespace Cashfluir.Web.Models.Categories
 {
-    public class CreateCategoryViewModel
+    public class EditCategoryViewModel
     {
-        public String Name { get; set; }
+        [Required]
+        public string Name { get; set; }
         public CategoryType Type { get; set; }
 
         public SelectList Types

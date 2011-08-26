@@ -6,10 +6,10 @@ using Cashfluir.Model;
 
 namespace Cashfluir.Commands
 {
-    public class EditUserCommand
+    public class EditCategoryCommand
     {
         public string Name { get; set; }
-        public string ID { get; set; }
         public CategoryType Type { get; set; }
+        public string ID { get; set; }
     }
 }

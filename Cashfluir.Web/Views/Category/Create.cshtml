@@ -1,4 +1,4 @@
-﻿@model Cashfluir.Web.Models.CreateCategoryViewModel
+﻿@model Cashfluir.Web.Models.Categories.CreateCategoryViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -10,7 +10,7 @@
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>CreateCategoryViewModel</legend>
+        <legend>Create Category</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -19,13 +19,15 @@
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
         </div>
-                <div class="editor-label">
+        
+        <div class="editor-label">
             @Html.LabelFor(model => model.Type)
         </div>
         <div class="editor-field">
             @Html.DropDownListFor(model => model.Type, Model.Types)
             @Html.ValidationMessageFor(model => model.Type)
         </div>
+
         <p>
             <input type="submit" value="Create" />
         </p>
