@@ -68,6 +68,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AbsenceController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ExpenseController.cs" />
@@ -79,6 +80,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Absence\IndexViewModel.cs" />
+    <Compile Include="Models\Absence\RegisterAbsenceViewModel.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Categories\CreateCategoryViewModel.cs" />
     <Compile Include="Models\Categories\EditCategoryViewModel.cs" />
@@ -186,6 +189,7 @@
     <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Content Include="Views\Category\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Expense\Edit.cshtml" />
+=======
+    <Content Include="Views\Absence\Index.cshtml" />
+>>>>>>> b48a0d50b33ed7882269989f766e0836fa6e65a4
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

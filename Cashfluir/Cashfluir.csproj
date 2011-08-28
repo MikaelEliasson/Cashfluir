@@ -100,14 +100,19 @@
     <Compile Include="CommandHandlers\EditCategoryCommandHandler.cs" />
     <Compile Include="CommandHandlers\EditExpenseCommandHandler.cs" />
     <Compile Include="CommandHandlers\EditUserCommandHandler.cs" />
+<<<<<<< HEAD
     <Compile Include="Commands\CreateCategoryCommand.cs" />
     <Compile Include="Commands\CreateExpenseCommand.cs" />
+=======
+    <Compile Include="CommandHandlers\RegisterAbsenceCommandHandler.cs" />
+>>>>>>> b48a0d50b33ed7882269989f766e0836fa6e65a4
     <Compile Include="Commands\CreateUserCommand.cs" />
     <Compile Include="CommandHandlers\CreateUserCommandHandler.cs" />
     <Compile Include="CommandInvoker.cs" />
     <Compile Include="Commands\EditCategoryCommand.cs" />
     <Compile Include="Commands\EditExpenseCommand.cs" />
     <Compile Include="Commands\EditUserCommand.cs" />
+    <Compile Include="Commands\RegisterAbsenceCommand.cs" />
     <Compile Include="Conventions\RegisterFirstInstanceOfInterface.cs" />
     <Compile Include="CoreRegistry.cs" />
     <Compile Include="EnumExtentions.cs" />
