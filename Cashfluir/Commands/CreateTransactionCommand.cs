@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Cashfluir.Model;
 
-namespace Cashfluir.Model
+namespace Cashfluir.Commands
 {
-    public class Transaction
+    public class CreateTransactionCommand
     {
-        public string Id { get; set; }
-        public User Sender { get; set; }
-        public User Reciever { get; set; }
+        public string Sender { get; set; }
+        public string Reciever { get; set; }
         public double Amount { get; set; }
         public DateTime Date { get; set; }
         public bool Confirmed { get; set; }

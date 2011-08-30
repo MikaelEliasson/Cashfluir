@@ -1,0 +1,64 @@
+﻿@model Cashfluir.Web.Models.Transactions.EditTransactionViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Edit Transaction</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Amount)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Amount)
+            @Html.ValidationMessageFor(model => model.Amount)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date)
+            @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Sender)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Sender,Model.Senders)
+            @Html.ValidationMessageFor(model => model.Sender)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Reciever)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Reciever,Model.Recievers)
+            @Html.ValidationMessageFor(model => model.Reciever)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Confirmed)
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.Confirmed)
+            @Html.ValidationMessageFor(model => model.Confirmed)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

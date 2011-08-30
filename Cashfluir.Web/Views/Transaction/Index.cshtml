@@ -1,0 +1,23 @@
+﻿@model Cashfluir.Web.Models.Transactions.IndexTransactionViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Index</h2>
+<ul>
+    @foreach (var transaction in Model.Transactions)
+    {
+        <li>@Html.ActionLink(transaction.Date.ToShortDateString(), "Edit", new { id = transaction.Id })
+            @transaction.Amount SEK From @transaction.Sender.Name to @transaction.Reciever.Name
+            @if (transaction.Confirmed)
+            {
+                <text>Confirmed</text>
+            }
+            else
+            {
+                <text>Not Confirmed</text>
+            }</li>
+    }
+</ul>
+@Html.ActionLink("Create new transaction", "Create")

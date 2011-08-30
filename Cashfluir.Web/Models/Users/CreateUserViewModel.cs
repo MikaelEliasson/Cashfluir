@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace Cashfluir.Web.Models
+namespace Cashfluir.Web.Models.Users
 {
     public class CreateUserViewModel
     {
