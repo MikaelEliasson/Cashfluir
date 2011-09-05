@@ -10,5 +10,7 @@ namespace Cashfluir.Model
         public string Id { get; set; }
         public string Name { get; set; }
         public ICollection<DateTime> AbsentDays { get; set; }
+        public double TotalAmountPaid { get; set; }
+        public double TotalAmountToPay { get; set; }
     }
 }

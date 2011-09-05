@@ -15,11 +15,13 @@ namespace Cashfluir.Web.Controllers
     {
         private readonly ICommandInvoker invoker;
         private ICategoryService categoryService;
+        private IUserService userService;
 
-        public CategoryController(ICommandInvoker invoker, ICategoryService categoryService)
+        public CategoryController(ICommandInvoker invoker, ICategoryService categoryService, IUserService userService)
         {
             this.invoker = invoker;
             this.categoryService = categoryService;
+            this.userService = userService;
         }
 
         //
@@ -47,7 +49,7 @@ namespace Cashfluir.Web.Controllers
 
         public ActionResult Create()
         {
-            return View(new CreateCategoryViewModel());
+            return View(new CreateCategoryViewModel(userService.GetUsers()));
         } 
 
         //
@@ -58,7 +60,7 @@ namespace Cashfluir.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var command = new CreateCategoryCommand { Name = model.Name, Type = model.Type };
+                var command = new CreateCategoryCommand { Name = model.Name, Type = model.Type, AffectedUsersIds = model.affectedUsersIds };
                 this.invoker.Execute(command);
                 return RedirectToAction("Index");
             }
@@ -71,10 +73,11 @@ namespace Cashfluir.Web.Controllers
 
         public ActionResult Edit(string id)
         {
-            var vm = new EditCategoryViewModel 
+            var vm = new EditCategoryViewModel (userService.GetUsers()) 
             {
                 Name = this.categoryService.GetCategory(id).Name,
-                Type = this.categoryService.GetCategory(id).Type 
+                Type = this.categoryService.GetCategory(id).Type,
+                AffectedUsersIds = this.categoryService.GetCategory(id).AffectedUsersIds
             };
             return View(vm);
         }
@@ -87,7 +90,7 @@ namespace Cashfluir.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var command = new EditCategoryCommand { Name = model.Name, Type = model.Type, ID = id };
+                var command = new EditCategoryCommand { Name = model.Name, Type = model.Type, ID = id, AffectedUsersIds = model.AffectedUsersIds };
                 this.invoker.Execute(command);
                 return RedirectToAction("Index");
             }

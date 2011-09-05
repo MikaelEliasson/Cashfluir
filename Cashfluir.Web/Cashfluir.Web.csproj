@@ -90,6 +90,7 @@
     <Compile Include="Models\Expenses\CreateExpenseViewModel.cs" />
     <Compile Include="Models\Expenses\EditExpenseViewModel.cs" />
     <Compile Include="Models\Expenses\IndexExpenseViewModel.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\Transactions\CreateTransactionViewModel.cs" />
     <Compile Include="Models\Transactions\EditTransactionViewModel.cs" />
     <Compile Include="Models\Transactions\IndexTransactionViewModel.cs" />

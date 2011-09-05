@@ -7,6 +7,7 @@ using Raven.Client;
 using Cashfluir.Repositories;
 using Cashfluir.Model;
 using Cashfluir.Services;
+using Cashfluir.Calculations;
 
 namespace Cashfluir.CommandHandlers
 {

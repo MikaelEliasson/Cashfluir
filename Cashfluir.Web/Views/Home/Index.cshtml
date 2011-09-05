@@ -1,8 +1,13 @@
-﻿@{
+﻿@model Cashfluir.Web.Models.HomeViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
-<h2>@ViewBag.Message</h2>
-<p>
+<ul>
 
-</p>
+@foreach (var userbalance in Model.UserBalances)
+{
+    <li>@userbalance.User.Name @(userbalance.TotalAmountPaid-userbalance.TotalExpenses)</li>
+}
+
+</ul>

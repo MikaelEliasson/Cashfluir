@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Calculations\ExpenseCalculator.cs" />
     <Compile Include="CommandHandlers\CreateCategoryCommandHandler.cs" />
     <Compile Include="CommandHandlers\CreateExpenseCommandHandler.cs" />
     <Compile Include="CommandHandlers\CreateTransactionCommandHandler.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="Model\Expense.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserBalance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Conventions\RegisterGenericTypesOfInterface.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />

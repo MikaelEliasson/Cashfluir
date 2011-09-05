@@ -10,9 +10,20 @@ namespace Cashfluir.Web.Models.Categories
 {
     public class EditCategoryViewModel
     {
+        public EditCategoryViewModel()
+        {
+
+        }
+        public EditCategoryViewModel(IEnumerable<User> users)
+        {
+            Users = users;
+        }
+
         [Required]
         public string Name { get; set; }
         public CategoryType Type { get; set; }
+        public ICollection<string> AffectedUsersIds { get; set; }
+        public IEnumerable<User> Users { get; set; }
 
         public SelectList Types
         {

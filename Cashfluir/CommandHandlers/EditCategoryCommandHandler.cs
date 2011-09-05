@@ -20,7 +20,7 @@ namespace Cashfluir.CommandHandlers
 
         public void Handle(EditCategoryCommand command)
         {
-            this.repository.Save(new Category{ Name = command.Name, Type = command.Type, Id = command.ID});
+            this.repository.Save(new Category{ Name = command.Name, Type = command.Type, Id = command.ID, AffectedUsersIds = command.AffectedUsersIds});
         }
     }
 }

@@ -27,7 +27,16 @@
             @Html.DropDownListFor(model => model.Type, Model.Types)
             @Html.ValidationMessageFor(model => model.Type)
         </div>
-
+        <br/>
+        Affected Users
+        <div>
+        <ul>
+        @foreach (var user in Model.Users)
+        {
+            <li><input type="checkbox" @(Model.AffectedUsersIds.Contains(user.Id) ? "checked='checked'" : "") name="affectedUsersIds" value="@user.Id" /> @user.Name</li>
+        }
+        </ul>
+        </div>
         <p>
             <input type="submit" value="Save" />
         </p>
