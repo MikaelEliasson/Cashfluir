@@ -322,3 +322,14 @@ div#title {
 .tri-state {
     width: 6em;
 }
+
+
+.good
+{
+     background-color: #C9FFAA;
+}
+
+.bad
+{
+    background-color: #FFBAD2;
+}
