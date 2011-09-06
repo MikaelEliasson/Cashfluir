@@ -2,13 +2,28 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
-<h2>Saldo</h2>
-<ul>
-
-@foreach (var userbalance in Model.UserBalances)
-{
-    <li>@userbalance.User.Name,     @((userbalance.TotalAmountPaid-userbalance.TotalExpenses).ToString("N2")) kr</li>
-}
-
-</ul>
+<h2>
+    Saldo</h2>
+<table>
+    <thead>
+        <tr>
+            <th />
+            <th title="Ej bekräftade transkationer">EBT</th>
+            <th>Har betalat totalt</th>
+            <th>Ska betala totalt</th>
+            <th>Saldo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var userbalance in Model.UserBalances)
+        {
+            <tr>
+                <td>@userbalance.User.Name</td>
+                <td>@userbalance.HasUnconfirmedTransactions</td>
+                <td>@userbalance.TotalAmountPaid</td>
+                <td>@userbalance.TotalExpenses</td>
+                <td class="@(userbalance.Balance < 0 ? "bad" : "good")">@userbalance.Balance.ToString("N2")</td>
+            </tr>
+        }
+    </tbody>
+</table>

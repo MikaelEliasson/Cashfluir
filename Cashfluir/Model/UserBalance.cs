@@ -20,5 +20,7 @@ namespace Cashfluir.Model
         public double TotalAmountPaid { get; set; }
 
         public bool HasUnconfirmedTransactions { get; set; }
+
+        public double Balance { get { return TotalAmountPaid - TotalExpenses; } }
     }
 }
