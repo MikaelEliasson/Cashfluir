@@ -5,13 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Skapa ny kategori</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Create Category</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
@@ -28,7 +26,7 @@
             @Html.ValidationMessageFor(model => model.Type)
         </div>
         <br/>
-        Affected Users
+        Berörda Användare
         <div>
         <ul>
         @foreach (var user in Model.Users)
@@ -38,12 +36,12 @@
         </ul>
         </div>
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Skapa" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tillbaka", "Index")
 </div>
 

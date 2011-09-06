@@ -9,6 +9,7 @@ namespace Cashfluir.Web.Models.Users
     public class EditUserViewModel
     {
         [Required]
+        [Display(Name = "Namn")]
         public string Name { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Cashfluir.Web.Models.Transactions
     public class CreateTransactionViewModel
     {
         public IEnumerable<User> Users { get; set; }
-        
+
         [Required]
         public double Amount { get; set; }
         public DateTime Date { get; set; }

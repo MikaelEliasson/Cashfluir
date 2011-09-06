@@ -5,13 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Registrera Överföring</h2>
 
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Create Transaction</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Amount)
@@ -54,12 +53,12 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Spara" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tillbaka", "Index")
 </div>
 

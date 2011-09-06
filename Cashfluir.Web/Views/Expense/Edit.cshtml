@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Redigera Utgift</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -53,12 +53,12 @@
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Spara" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tillbaka", "Index")
 </div>
 

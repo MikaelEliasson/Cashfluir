@@ -54,6 +54,7 @@ namespace Cashfluir.Web.Controllers
         {
             var vm = new CreateExpenseViewModel
             {
+                Date = DateTime.Now,
                 Categories = this.categoryService.GetCategories(),
                 Users = this.userService.GetUsers()
             };

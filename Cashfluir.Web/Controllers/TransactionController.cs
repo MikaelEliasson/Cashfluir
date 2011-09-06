@@ -51,6 +51,7 @@ namespace Cashfluir.Web.Controllers
         {
             var vm = new CreateTransactionViewModel
             {
+                Date = DateTime.Now,
                 Users = this.userService.GetUsers()
             };
             return View(vm);

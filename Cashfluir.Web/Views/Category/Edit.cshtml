@@ -5,12 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Redigera Kategori</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Edit Category</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -38,12 +37,12 @@
         </ul>
         </div>
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Spara" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tillbaka", "Index")
 </div>
 
