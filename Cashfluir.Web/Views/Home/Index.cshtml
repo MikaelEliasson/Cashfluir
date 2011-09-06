@@ -19,9 +19,9 @@
         {
             <tr>
                 <td>@userbalance.User.Name</td>
-                <td>@userbalance.HasUnconfirmedTransactions</td>
-                <td>@userbalance.TotalAmountPaid</td>
-                <td>@userbalance.TotalExpenses</td>
+                <td> <span style="@(userbalance.HasUnconfirmedTransactions ? "color:red" : "")">@userbalance.HasUnconfirmedTransactions</td>
+                <td>@userbalance.TotalAmountPaid.ToString("N2")</td>
+                <td>@userbalance.TotalExpenses.ToString("N2")</td>
                 <td class="@(userbalance.Balance < 0 ? "bad" : "good")">@userbalance.Balance.ToString("N2")</td>
             </tr>
         }
