@@ -3,11 +3,12 @@
     ViewBag.Title = "Home Page";
 }
 
+<h2>Saldo</h2>
 <ul>
 
 @foreach (var userbalance in Model.UserBalances)
 {
-    <li>@userbalance.User.Name @(userbalance.TotalAmountPaid-userbalance.TotalExpenses)</li>
+    <li>@userbalance.User.Name,     @((userbalance.TotalAmountPaid-userbalance.TotalExpenses).ToString("N2")) kr</li>
 }
 
 </ul>

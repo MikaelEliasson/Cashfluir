@@ -21,7 +21,7 @@ namespace Cashfluir.Web.Controllers
             this.userService = userService;
         }
 
-        public ActionResult Index(string id)
+        public ActionResult Index(string id, int? year, int? month)
         {
             var users = this.userService.GetUsers();
             if (string.IsNullOrWhiteSpace(id))
@@ -30,8 +30,10 @@ namespace Cashfluir.Web.Controllers
             }
             else
             {
-                var today = DateTime.Today;
-                return View(new IndexViewModel(users.First(u => u.Id == id), new DateTime(today.Year, today.Month, 1), users));
+                
+                var startDate = new DateTime(year ?? DateTime.Now.Year, month ?? DateTime.Now.Month, 1);
+
+                return View(new IndexViewModel(users.First(u => u.Id == id), startDate, users));
             } 
         }
 

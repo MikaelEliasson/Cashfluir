@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Ny Användare</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -21,12 +21,12 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Skapa" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tillbaka", "Index")
 </div>
 
