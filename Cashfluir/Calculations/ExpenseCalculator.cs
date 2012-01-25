@@ -12,14 +12,15 @@ namespace Cashfluir.Calculations
         
         public IEnumerable<UserBalance> CalculateBalances(IEnumerable<User> users, IEnumerable<Expense> expenses, IEnumerable<Transaction> transactions)
         {
+            var dayCount = DateTime.Today.Subtract(new DateTime(2011, 07, 14)).Days;
             var balances = users.Select(u => new UserBalance
             {
                 User = u,
-                ExpensesPerCategory = new Dictionary<Category, double>()
+                ExpensesPerCategory = new Dictionary<Category, double>(),
+                DaysPresent = dayCount - (u.AbsentDays ?? new DateTime[0]).Count
             }).ToDictionary(ub => ub.User.Id, ub => ub);
 
-            var dayCount = DateTime.Today.Subtract(new DateTime(2011, 07, 14)).Days;
-            var totalDays = users.Sum(u => dayCount - (u.AbsentDays ?? new DateTime[0]).Count);
+            var totalDays = balances.Sum(b => b.Value.DaysPresent);
 
             foreach (var expense in expenses)
             {

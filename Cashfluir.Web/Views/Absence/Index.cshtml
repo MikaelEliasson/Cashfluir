@@ -17,13 +17,15 @@
 {
     return;
 }
+    <h3>Registrera för @Model.User.Name</h3>
+
     <h3>@Html.ActionLink("<<", "Index", new { id = Model.User.Id, year = Model.StartDate.AddMonths(-1).Year, month = Model.StartDate.AddMonths(-1).Month })
     @Model.Days.First().Date.ToString("MMMM")
     @Html.ActionLink(">>", "Index", new { id = Model.User.Id, year = Model.StartDate.AddMonths(1).Year, month = Model.StartDate.AddMonths(1).Month })</h3>
 
 @using (Html.BeginForm("Register", "Absence", FormMethod.Post, new { id = Model.User.Id }))
 {
-    
+
 
     
     <ul>

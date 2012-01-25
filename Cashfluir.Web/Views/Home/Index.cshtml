@@ -12,6 +12,10 @@
             <th>Har betalat totalt</th>
             <th>Ska betala totalt</th>
             <th>Saldo</th>
+            @foreach (var category in Model.Categories)
+            {
+                <th>@category.Name</th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -23,7 +27,44 @@
                 <td>@userbalance.TotalAmountPaid.ToString("N2")</td>
                 <td>@userbalance.TotalExpenses.ToString("N2")</td>
                 <td class="@(userbalance.Balance < 0 ? "bad" : "good")">@userbalance.Balance.ToString("N2")</td>
+                @foreach (var category in Model.Categories)
+                {
+                    <td>@if (userbalance.ExpensesPerCategory.ContainsKey(category))
+                        {
+                            @userbalance.ExpensesPerCategory[category].ToString("N2")
+                        }
+                        </td>
+                }
             </tr>
         }
+        <tr>
+            <td><b>Totalt</b></td>
+            <td></td>
+            <td>@Model.UserBalances.Sum(ub => ub.TotalAmountPaid).ToString("N2")</td>
+            <td></td>
+            <td></td>
+            @foreach (var category in Model.Categories)
+            {
+                <td>@Model.CalculateTotalExpense(category).ToString("N2")</td>
+            }
+        </tr>
+        <tr>
+            <td><b>Per dag</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            @foreach (var category in Model.Categories)
+            {
+                if (category.Type == Cashfluir.Model.CategoryType.BasedOnPresence)
+                {
+                    <td>@Model.CalculateTotalExpensePerDay(category).ToString("N2")</td>
+                }
+                else
+                {
+                    <td></td>
+                }
+            }
+        </tr>
     </tbody>
 </table>

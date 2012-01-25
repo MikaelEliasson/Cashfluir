@@ -6,12 +6,38 @@
 }
 
 <h2>Redigera Utgifter</h2>
+<table id="expenses">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Ägare</th>
+            <th>Belopp</th>
+            <th>Affär</th>
+            <th>Kategori</th>
+        </tr>
+    </thead>
 
+    <tbody>
+        @foreach (var expense in Model.Expenses)
+        {
+            <tr>
+               <td>@Html.ActionLink(expense.Date.ToShortDateString(), "Edit", new { id = expense.Id })</td>
+                <td>@expense.Owner.Name</td>
+                <td>@expense.Amount kr</td>
+                <td>@expense.Shop</td>
+                <td>@expense.ExpenseType.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
 <ul>
-    @foreach (var expense in Model.Expenses)
-    {
-        <li>@Html.ActionLink(expense.Date.ToShortDateString(), "Edit", new { id = expense.Id }) @expense.Owner.Name @expense.Amount kr </li>
-    }
+    
 </ul>
 
 @Html.ActionLink("Registrera ny utgift", "Create")
+
+<link href="/Content/demo_table.css" rel="stylesheet" type="text/css" />
+<script src="/Scripts/jquery.dataTables.min.js" type="text/javascript"></script>
+<script type="text/javascript">    $(document).ready(function () {
+        $('#expenses').dataTable();
+    }); </script>
